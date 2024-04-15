@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FilmsCatalogMVC.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div>
+    <h4>Category</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Parent Category Id</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.Name</td>
+                    <td>@category.ParentCategoryId</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@category.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@category.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@category.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Create">Create New</a>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
